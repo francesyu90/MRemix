@@ -6,7 +6,7 @@
 	<div class="container">
     {{> libraryHeader}}
 		{{> getFilesFromDatabase}}
-    
+    {{> instructions}}
 	</div>
 </template>
 
@@ -60,6 +60,15 @@
 			{{/EasySearch.Each}}
     	</tbody>
 	</table>
+</template>
+
+<template name="instructions">
+  <br><br><br>
+  <b>Instructions: </b>
+  <ul style="list-style-type:square">
+    <li>Click the checkbox in the table header to add all tracks.</li>
+    <li>Click the checkbox on the right of the track to add the corresponding track.</li>
+  </ul>
 </template>
 
 <template name="AddMusicModal">
