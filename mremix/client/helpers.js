@@ -6,6 +6,20 @@ Template.getFilesFromDatabase.helpers({
 
 });
 
+Template.tableHeader.helpers({
+
+	checkAddAll:function(){
+		var size = Tracks.find({}).count();
+		var count = Tracks.find({isAdd:true}).count();
+		if(size == count){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+});
+
 Template.showCurrentPlaylist.helpers({
 
 	isPlaylistEmpty:function(){

@@ -15,7 +15,7 @@ Template.AddMusicModal.events({
 
 });
 
-Template.getFilesFromDatabase.events({
+Template.tableHeader.events({
 
 	"click .js-tog-addAll":function(event){
 		var isAddAll = event.target.checked;
@@ -29,7 +29,12 @@ Template.getFilesFromDatabase.events({
 			track.isAdd = isAddAll;
 			Meteor.call("updateMusic", track);
 		}
-	},
+	}
+
+});
+
+Template.getFilesFromDatabase.events({
+
 	"click .js-tog-add":function(event){
 		var isAdd = event.target.checked;
 		var trackId = event.target.id;
