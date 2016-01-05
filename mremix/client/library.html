@@ -74,12 +74,14 @@
           <h4 class="modal-title">Add Music</h4>
         </div>
         <div class="modal-body">
+          <form class="js-add-music" id="addMusicForm">
           {{> AddMusicForm}}
+          </form>
         </div>
         <div class="modal-footer">
           <div class="btn-group" role="group" aria-label="...">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" form="AddMusicForm">Submit</button>
+            <button type="submit" class="btn btn-primary" form="addMusicForm">Submit</button>
           </div>
         </div>
       </div>
@@ -91,7 +93,7 @@
 <template name="AddMusicForm">
 
   <!-- <div class="container marginTop"> -->
-    <form class="js-add-music" id="addMusicForm">
+    <!-- <form class="js-add-music" id="addMusicForm"> -->
       <div class="form-group">
         <label for="musicName">
           Name
@@ -108,8 +110,8 @@
       </div> 
         <!-- <br><br> -->
         <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
-    </form>
-    <br>
+    <!-- </form> -->
+   <!--  <br> -->
   <!-- </div> -->
 </template>
 
