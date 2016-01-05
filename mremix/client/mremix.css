@@ -4,13 +4,17 @@
 
 #footer {
 	margin-top: 100px;
-	background-color: black;
+	/*background-color: black;*/
 }
 
 footer {
 	padding-top: 20px;
 	padding-bottom: 200px;
 	float: right;
-	color: white;
+	/*color: white;*/
+}
+
+#addMusicForm textarea { 
+	resize: vertical; 
 }
 

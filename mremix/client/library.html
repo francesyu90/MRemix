@@ -3,7 +3,6 @@
 </template>
 
 <template name="libraryMain">
-	<br><br><br><br><br><br>
 	<div class="container">
 		{{> getFilesFromDatabase}}
 	</div>
@@ -11,6 +10,17 @@
 </template>
 
 <template name="getFilesFromDatabase">
+  <br><br><br>
+  <div class="row">
+    <div class="col-md-10">
+      Search: {{> EasySearch.Input index=musicUrlsIndex }} 
+    <!-- </div> -->
+    <!-- <div class="col-md-2"> -->
+      {{> AddMusicModal}}
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">Add Music</button>
+    </div>
+  </div>
+  <br><br><br>
 	<table class="table table-bordered table-striped">
 		<thead>
       		<tr>
@@ -26,7 +36,7 @@
       		</tr>
     	</thead>
     	<tbody>
-    		{{#each musicurls}}
+    		{{#EasySearch.Each index=musicUrlsIndex }}
     			<tr>
     				<td class="text-center">
     					<input type="checkbox" name="musicUrls" value="{{musicName}}">
@@ -38,12 +48,61 @@
     					{{musicUrl}}
     				</td>
     			</tr>
-			{{/each}}
+			{{/EasySearch.Each}}
     	</tbody>
 	</table>
 </template>
 
+<template name="AddMusicModal">
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add Music</button> -->
+  <!-- Modal -->
+  <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Music</h4>
+        </div>
+        <div class="modal-body">
+          {{> AddMusicForm}}
+        </div>
+        <div class="modal-footer">
+          <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" form="AddMusicForm">Submit</button>
+          </div>
+        </div>
+      </div>
 
+  </div>
+</div>
+</template>
+
+<template name="AddMusicForm">
+
+  <!-- <div class="container marginTop"> -->
+    <form class="js-add-music" id="addMusicForm">
+      <div class="form-group">
+        <label for="musicName">
+          Name
+        </label>
+        <br>
+        <textarea class="form-control" rows="1" id="musicName" placeholder="Please enter name for a .wav or .aif file ..." maxlength="40"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="musicUrl">
+          URL
+        </label>
+        <br>
+        <textarea class="form-control" rows="1" id="musicUrl" placeholder="Please enter url for a .wav or .aif file ..." maxlength="40"></textarea>
+      </div> 
+        <!-- <br><br> -->
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+    </form>
+    <br>
+  <!-- </div> -->
+</template>
 
 
 
