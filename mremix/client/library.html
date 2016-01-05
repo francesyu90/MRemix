@@ -3,10 +3,13 @@
 </template>
 
 <template name="libraryMain">
+  <a id="top"></a>
 	<div class="container">
     {{> libraryHeader}}
 		{{> getFilesFromDatabase}}
     {{> instructions}}
+    <br><br><br>
+    {{> showCurrentPlaylist}}
 	</div>
 </template>
 
@@ -19,17 +22,25 @@
 <template name="getFilesFromDatabase">
   <br><br><br>
   <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-8">
       <!-- {{> AddMusicModal}}
       <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add Music</button> -->
-      Search: {{> EasySearch.Input index=musicUrlsIndex }} 
+      Search: {{> EasySearch.Input index=tracksIndex }} 
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       {{> AddMusicModal}}
-      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add Music</button>
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">Add Track to Database</button>
+        <button type="button" class="btn btn-primary btn-sm">
+          <a href="#playlist" class="linktoP">Click to see playlist</a>
+        </button>
+      </div>
     </div>
   </div>
   <br><br><br>
+  <!-- {{> showCurrentPlaylist}} -->
+  <br>
+  <!-- <br><br> -->
 	<table class="table table-bordered table-striped">
 		<thead>
       		<tr>
@@ -45,10 +56,10 @@
       		</tr>
     	</thead>
     	<tbody>
-    		{{#EasySearch.Each index=musicUrlsIndex }}
+    		{{#EasySearch.Each index=tracksIndex }}
     			<tr>
     				<td class="text-center">
-    					<input type="checkbox" name="musicUrls" value="{{musicName}}">
+    					<input type="checkbox" name="musicUrls" value="{{musicName}}" id="{{_id}}" class="js-tog-add">
     				</td>
     				<td class="text-center">
     					{{musicName}}
@@ -60,6 +71,9 @@
 			{{/EasySearch.Each}}
     	</tbody>
 	</table>
+  <div class="text-center">
+    {{> EasySearch.Pagination index=tracksIndex maxPages=10}}
+  </div>
 </template>
 
 <template name="instructions">
@@ -122,6 +136,35 @@
     <!-- </form> -->
    <!--  <br> -->
   <!-- </div> -->
+</template>
+
+<template name="showCurrentPlaylist">
+  <a id="playlist"></a>
+  {{#if isPlaylistEmpty}}
+    {{> emptyPlaylistAlert}}
+  {{else}}
+    {{> playlistAlert}}
+  {{/if}}
+  <button type="button" class="btn btn-primary btn-sm">
+    <a href="#top" class="linktoP">Return to Top</a>
+  </button>
+</template>
+
+<template name="emptyPlaylistAlert">
+  <div class="alert alert-warning" role="alert">
+    Current playlist is empty!
+  </div>
+</template>
+
+<template name="playlistAlert">
+  <div class="alert alert-info" role="alert">
+    Tracks in the current playlist: 
+    <ol>
+      {{#each currentPlaylist}}
+        <li>{{musicName}}</li>
+      {{/each}}
+    </ol>
+  </div>
 </template>
 
 

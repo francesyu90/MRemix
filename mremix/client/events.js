@@ -19,16 +19,31 @@ Template.getFilesFromDatabase.events({
 
 	"click .js-tog-addAll":function(event){
 		var isAddAll = event.target.checked;
-		if(isAddAll){
-			var musicurls = MusicUrls.find({}).fetch();
-			playlist = [];
-			for(var i = 0; i < musicurls.length; i++){
-				playlist.push(musicurls[i]._id);
-			}
-		} else {
-			playlist = [];
+		var tracks = Tracks.find({}).fetch();
+		var count = Tracks.find({}).count();
+		if(count <= 0){
+			return;
 		}
-		Session.set("playlist", playlist);
+		for(var i = 0; i < tracks.length; i++){
+			var track = tracks[i];
+			track.isAdd = isAddAll;
+			Meteor.call("updateMusic", track);
+		}
+	},
+	"click .js-tog-add":function(event){
+		var isAdd = event.target.checked;
+		var trackId = event.target.id;
+		var track = Tracks.findOne({_id:trackId});
+		if(!track){
+			return;
+		}
+		if(isAdd){
+			track.isAdd = true;
+		}else{
+			track.isAdd = false;
+		}
+		Meteor.call("updateMusic", track);
 	}
 
 });
+
