@@ -4,9 +4,16 @@
 
 <template name="libraryMain">
 	<div class="container">
+    {{> libraryHeader}}
 		{{> getFilesFromDatabase}}
+    
 	</div>
+</template>
 
+<template name="libraryHeader">
+  <div class="page-header">
+    <h1>Library <small> find & add  tracks of audio </small></h1>
+  </div>
 </template>
 
 <template name="getFilesFromDatabase">
