@@ -1,4 +1,35 @@
 <template name="mremix">
-	
+	<div class="container">
+		{{> playlistCheck}}
+	</div>
 </template>
+
+<template name="playlistCheck">
+	{{#if isPlaylistEmpty}}
+    	{{> emptyPlaylistAlertI}}
+  	{{else}}
+  		{{> studio}}
+  	{{/if}}
+</template>
+
+<template name="emptyPlaylistAlertI">
+	<div class="alert alert-warning" role="alert">
+		<p>
+			Current playlist is empty! Please go to 
+			<b>
+				<a href="/library" id="emptyAlertI">
+					Library
+				</a>
+			</b> 
+			page to add tracks.
+		</p>
+	</div>
+</template>
+
+<template name="studio">
+	{{getReady}}
+	{{> playlistAlert}}
+</template>
+
+
 

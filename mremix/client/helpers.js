@@ -44,4 +44,36 @@ Template.playlistAlert.helpers({
 
 });
 
+Template.playlistCheck.helpers({
+
+	isPlaylistEmpty:function(){
+		var count = Tracks.find({isAdd:true}).count();
+		if(count <= 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
