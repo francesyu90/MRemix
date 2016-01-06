@@ -33,3 +33,28 @@ Router.route('/library', function () {
 		to:"footer"
 	});
 });
+
+Router.route('/contact', function () {
+	this.render("navbar",{
+		to:"navbar"
+	});
+	this.render("contact",{
+		to:"main"
+	});
+	this.render("footer",{
+		to:"footer"
+	});
+});
+
+/*	Music Machine	*/
+Router.route('/sample', function () {
+	this.render("navbar",{
+		to:"navbar"
+	});
+	this.render("sample",{
+		to:"main"
+	});
+	this.render("footer",{
+		to:"footer"
+	});
+});
