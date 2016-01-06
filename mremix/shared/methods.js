@@ -19,3 +19,5 @@ Meteor.methods({
 	}
 
 });
+
+/*	Music Machine	*/

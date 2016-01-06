@@ -4,3 +4,5 @@ TracksIndex = new EasySearch.Index({
     fields: ['musicName'],
     engine: new EasySearch.Minimongo()
   });
+
+/*	Music Machine	*/
