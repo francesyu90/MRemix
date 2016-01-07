@@ -12,4 +12,4 @@ Jan 5th
 	2.	implement create playlist functionality (done!)
 
 Jan 6th
-	implement Music Machine 2015
+	implement Music Machine 2015 (done!)

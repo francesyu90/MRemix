@@ -2,6 +2,7 @@
 <template name="sample">
 	<div class="container">
 		{{> sampleHeader}}
+		{{> sampleStudio}}
 	</div>
 </template>
 
@@ -10,3 +11,53 @@
     <h1> Music Machine 2015 <small> sample working system </small></h1>
   </div>
 </template>
+
+<template name="sampleStudio">
+	<div class="row marginTop">
+		<div class="col-md-offset-1 col-md-4">
+			<div class="btn-group" role="group" aria-label="...">
+				<button class="btn btn-default js-stopBtn">Turn Off</button>
+				<button class="btn btn-primary js-startBtn">DAC</button>
+  			</div>
+		</div>
+		<div>
+			<h4> Play Mode </h4>
+			<label> DAC </label> {{startdac}}  <label> Drum </label> {{drums}} <label> Arp </label> {{arp}}
+			<label> Bass </label> {{bass}} <label> Chord </label> {{chords}} <label> Hihat </label> {{hihat}}
+			<label> Slow Drum </label> {{slowdrums}} <label> Snare Drum </label> {{snaredrum}} 
+			<label> Vibe </label> {{vibes}}
+			<br>
+
+			<!-- {{startdac}}  -->
+			<!-- {{drums}} {{bass}} {{arp}} {{chords}} {{hihat}}  -->
+		</div>
+	</div>
+	<div class="row">
+		{{#each musicInstruments}}
+			<div class="col-md-4">
+				<div class="bs-callout bs-callout-default">
+		  			<h4>
+						{{name}}
+		  			</h4>
+		  			<br>
+		  			<br>
+		  			<div class="btn-group" role="group" aria-label="...">
+		  				<button type="button" class="btn btn-default" id="{{toOffLC name}}">
+		  					OFF
+		  				</button>
+						<button type="button" class="btn btn-primary" id="{{toOnLC name}}">
+							ON
+						</button>
+					</div>
+					<br><br>
+					<label> Volume </label> 
+					<input id="{{@index}}" type="range" value="{{volume}}" min="0" max="100" class="js-change-volume">
+					<label> Speed </label> 
+					<input id="s{{@index}}" type="range" value="{{speed}}" min="0" max="100" class="js-change-speed">
+				</div>
+			</div>
+		{{/each}}
+	</div>
+</template>
+
+

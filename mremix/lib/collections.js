@@ -6,3 +6,4 @@ TracksIndex = new EasySearch.Index({
   });
 
 /*	Music Machine	*/
+MusicMachine = new Mongo.Collection("musicMachine");

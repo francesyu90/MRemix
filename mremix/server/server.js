@@ -3,3 +3,10 @@ Meteor.publish("tracks", function(){
 });
 
 /*	Music Machine	*/
+Meteor.publish("musicMachine", function(){
+    return MusicMachine.find();
+});
+
+if(MusicMachine.find().count() === 0) {
+	MusicMachine.insert({slide: 50});
+}
